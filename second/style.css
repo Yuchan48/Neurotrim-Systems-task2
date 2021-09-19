@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-color: #000;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ball {
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+}
+
+.wrapper {
+  width: 700px;
+  height: 500px;
+  position: relative;
+}
