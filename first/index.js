@@ -4,28 +4,26 @@ let ball2 = document.getElementById("ball2");
 let maxX = window.innerWidth - ball1.offsetWidth;
 let maxY = window.innerHeight - ball1.offsetHeight;
 
-let duration = 3;
-let gridSize = 100;
+let duration = 2; // increment => faster, decrement => slower
+let gridSize = 100; // amplitude
 
 let start = null;
 
 const step = (timestamp) => {
-  let progress, x, y, y2;
-  if (start === null) start = timestamp;
+  // hitting the right side of the wall will reset the progress to zero. (range 0 - 1)
+  let progress = ((timestamp - start) * duration) / 10000;
 
-  progress = ((timestamp - start) * duration) / 10000;
-
-  x = progress * maxX;
-
-  dy = x / gridSize;
-  y = 2 * Math.sin(dy);
-  y2 = 2 * Math.cos(dy);
+  let x = progress * maxX;
+  let dy = x / gridSize;
+  let y = 2 * Math.sin(dy);
+  let y2 = 2 * Math.cos(dy);
 
   ball1.style.left = ball2.style.left = Math.min(maxX, x) + "px";
   ball1.style.bottom = maxY / 2 + gridSize * y + "px";
   ball2.style.bottom = maxY / 2 + gridSize * y2 + "px";
 
-  if (progress >= 1) start = null;
+  // hitting the right side of the wall
+  if (progress >= 1) start = timestamp;
 
   requestAnimationFrame(step);
 };
