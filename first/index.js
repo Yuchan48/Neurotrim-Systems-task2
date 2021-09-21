@@ -4,14 +4,14 @@ let ball2 = document.getElementById("ball2");
 let maxX = window.innerWidth - ball1.offsetWidth;
 let maxY = window.innerHeight - ball1.offsetHeight;
 
-let duration = 2; // increment => faster, decrement => slower
+let duration = 0.2; // increment => faster, decrement => slower
 let gridSize = 100; // amplitude
 
 let start = null;
 
 const step = (timestamp) => {
   // hitting the right side of the wall will reset the progress to zero. (range 0 - 1)
-  let progress = ((timestamp - start) * duration) / 10000;
+  let progress = ((timestamp - start) * duration) / 1000;
 
   let x = progress * maxX;
   let dy = x / gridSize;
