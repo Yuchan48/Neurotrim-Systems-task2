@@ -4,7 +4,7 @@ let ball2 = document.getElementById("ball2");
 let maxX = window.innerWidth - ball1.offsetWidth;
 let maxY = window.innerHeight - ball1.offsetHeight;
 
-let duration = 0.0003;
+let duration = 3;
 let gridSize = 100;
 
 let start = null;
@@ -13,7 +13,7 @@ const step = (timestamp) => {
   let progress, x, y, y2;
   if (start === null) start = timestamp;
 
-  progress = (timestamp - start) * duration;
+  progress = ((timestamp - start) * duration) / 10000;
 
   x = progress * maxX;
 
